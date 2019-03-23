@@ -58,7 +58,7 @@ function led.setstate()
     
 -- Get LED state
 -- false=OFF, true=ON
-function M.getstate()
+function led.getstate()
 ```
 
 
@@ -83,14 +83,14 @@ function ledpattern.setinterval(value)
 ledpattern.setstate = led.setstate
 
 -- Stop creating pattern
-function M.stop()
+function ledpattern.stop()
 
 -- Start creating pattern
-function M.start()
+function ledpattern.start()
 
 -- Start or stop
 --  state=true to start, state=false to stop
-function M.run(state)
+function ledpattern.run(state)
 ```
 
 For more information, please see [Blinky with a twist - Blink a LED connected to GPIO2 of ESP12F - in LUA, pattern branch](https://gitlab.com/pintergabor/blinky/tree/pattern).
@@ -104,7 +104,7 @@ of the Morse code. This notation not only makes writing patterns easier, it make
 ```lua
 -- Convert morse code to blinky code, that can be used to
 -- create LED patterns with the ledtatterns module.
-function M.toblinky(morse)
+function morsetoblinky.toblinky(morse)
 ```
 
 This would translate the `".--. .. -. - . .-.   --. .- -... --- .-.     "` pattern to the much longer `"- --- --- -   - -   --- -   ---   -   - --- -       --- --- -   - ---   --- - - -   --- --- ---   - --- -         "` blinky pattern.
@@ -118,7 +118,7 @@ An even more compact way of defining blinking patterns is to translate plain tex
 
 ```lua
 -- Convert text to morse code
-function M.tomorse(text)
+function texttomorse.tomorse(text)
 ```	
 
 This would translate the `"PINTER GABOR  "` pattern to the pattern shown in the previous example.
@@ -155,6 +155,7 @@ There are two additional, rarely used, functions:
 
 ```lua
 -- Base tick can be changed
+-- 'tick' is in ms. The default value is 1000ms.
 -- This affects ALL second timers, immediately
 function stmr.setbasetick(tick)
 
@@ -181,7 +182,7 @@ List available networks in a simple form.
 ```lua
 -- List available networks in a simple form
 -- Call callback, when done
-function M.listap(callback)
+function wlistsimple.listap(callback)
 ```	
 
 For more information, please see [Blinky with a twist - Blink a LED connected to GPIO2 of ESP12F - in LUA](https://gitlab.com/pintergabor/blinky).
@@ -194,7 +195,7 @@ List available networks in a fancy form.
 ```lua
 -- List available networks in a fancy form
 -- Call callback, when done
-function M.listap(callback)
+function wlistfancy.listap(callback)
 ```	
 
 For more information, please see [Blinky with a twist - Blink a LED connected to GPIO2 of ESP12F - in LUA](https://gitlab.com/pintergabor/blinky).
@@ -336,7 +337,7 @@ Help writing asynchronous tests.
 
 ```lua
 -- Callback at the end
-tetutil.callback = nil
+testutil.callback
 
 -- At the end of the test, execute callback.
 function testutil.endtest()
